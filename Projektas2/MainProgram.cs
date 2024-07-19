@@ -77,7 +77,7 @@ namespace MainSpace
             */
 
             //////////////////////////////////
-            // 8 uzduotis ////////////////////
+            // BONUS uzduotis ////////////////
             //////////////////////////////////
 
             /*
@@ -85,6 +85,14 @@ namespace MainSpace
             ReadAndCheckIfUpperCase();
             */
 
+            //////////////////////////////////
+            // 8 uzduotis ////////////////////
+            //////////////////////////////////
+
+            /*
+            Console.WriteLine("Iveskite kvadrato krastines ilgi:");
+            ReadAndCalculateSquarePerimeter();
+            */
         }
 
         /// <summary>
@@ -210,7 +218,9 @@ namespace MainSpace
             Console.WriteLine("Skaicius nera triju skaitmenu");
         }
 
-
+        /// <summary>
+        /// Nuskaito simboli, patikrina ar simbolis yra didzioji raide ir atspausdina rezultata
+        /// </summary>
         public static void ReadAndCheckIfUpperCase()
         {
             char.TryParse(Console.ReadLine(), out char Simbolis);
@@ -219,7 +229,21 @@ namespace MainSpace
             else if( char.IsUpper(Simbolis) )
                 Console.WriteLine("Simbolis yra didzioji raide");
             else
-                Console.WriteLine("Simbolis nera didzioji raide");
+                Console.WriteLine("Simbolis nera didzioji raide"); 
+        }
+
+        /// <summary>
+        /// Nuskaito skaiciu, apskaiciuoja kvadrato perimetra ir atspausdina rezultata 
+        /// </summary>
+        public static void ReadAndCalculateSquarePerimeter()
+        {
+            if (!int.TryParse(Console.ReadLine(), out int Number) || Number <= 0)
+            {
+                Console.WriteLine("Neteisinga ivestis!");
+                return;
+            }
+            Number *= 4;
+            Console.WriteLine($"Kvadrato perimetras: {Number}");
         }
     }
 }
