@@ -90,8 +90,42 @@ namespace MainSpace
             //////////////////////////////////
 
             /*
-            Console.WriteLine("Iveskite kvadrato krastines ilgi:");
             ReadAndCalculateSquarePerimeter();
+            */
+
+            //////////////////////////////////
+            // 9 uzduotis ////////////////////
+            //////////////////////////////////
+
+            /*
+            double Base = 0;
+            double Height = 0;
+            ReadTriangleData(ref Base, ref Height);
+            CalculateTriangleArea(ref Base, ref Height);
+            */
+
+            //////////////////////////////////
+            // 10 uzduotis ///////////////////
+            //////////////////////////////////
+
+            /*
+            CalculateCircleAreaAndPerimeter(ReadCircleRadius());
+            */
+
+            //////////////////////////////////
+            // 11 uzduotis ///////////////////
+            //////////////////////////////////
+
+            /*
+            ReadAndCalculateCubeContent();
+            */
+
+            //////////////////////////////////
+            // 12 uzduotis ///////////////////
+            //////////////////////////////////
+
+            /*
+            ReadAndCalculateTemperature();
             */
         }
 
@@ -237,13 +271,111 @@ namespace MainSpace
         /// </summary>
         public static void ReadAndCalculateSquarePerimeter()
         {
-            if (!int.TryParse(Console.ReadLine(), out int Number) || Number <= 0)
+            Console.WriteLine("Iveskite kvadrato krastines ilgi:");
+            if (!double.TryParse(Console.ReadLine(), out double Number) || Number <= 0)
             {
                 Console.WriteLine("Neteisinga ivestis!");
                 return;
             }
             Number *= 4;
             Console.WriteLine($"Kvadrato perimetras: {Number}");
+        }
+
+        /// <summary>
+        /// Nuskaito trikampio pagridno ilgi ir auksti
+        /// </summary>
+        /// <param name="Base"></param>
+        /// <param name="Height"></param>
+        public static void ReadTriangleData(ref double Base, ref double Height)
+        {
+            Console.WriteLine("Iveskite trikampio pagrindo ilgi:");
+            if (!double.TryParse(Console.ReadLine(), out double BaseValue) || BaseValue <= 0)
+            {
+                Console.WriteLine("Neteisinga ivestis!");
+                return;
+            }
+            Console.WriteLine("Iveskite trikampio pagrindo auksti:");
+            if (!double.TryParse(Console.ReadLine(), out double HeightValue) || HeightValue <= 0)
+            {
+                Console.WriteLine("Neteisinga ivestis!");
+                return;
+            }
+            Base = BaseValue;
+            Height = HeightValue;
+        }
+
+        /// <summary>
+        /// Apskaiciuoja trikampio plota ir atspausdina rezultata
+        /// </summary>
+        /// <param name="Base"></param>
+        /// <param name="Height"></param>
+        public static void CalculateTriangleArea(ref double Base, ref double Height)
+        {
+            if (Base > 0 && Height > 0)
+            {
+                Base = Base * Height * 0.5;
+                Console.WriteLine($"Trikampio plotas: {Base}");
+            }
+        }
+
+        /// <summary>
+        /// Nuskaito apskritimo spinduli
+        /// </summary>
+        /// <returns></returns>
+        public static double ReadCircleRadius()
+        {
+            Console.WriteLine("Iveskite apskritimo spinduli ilgi:");
+            if (!double.TryParse(Console.ReadLine(), out double Value) || Value <= 0)
+            {
+                Console.WriteLine("Neteisinga ivestis!");
+                return 0;
+            }
+            return Value;
+        }
+
+        /// <summary>
+        /// Apskaiciuoja apskritimo plota ir perimetra. Rezultatus atspausdina.
+        /// </summary>
+        /// <param name="Radius"></param>
+        public static void CalculateCircleAreaAndPerimeter(double Radius)
+        {
+            if(Radius > 0)
+            {
+                double Value = Math.PI * Radius * Radius;
+                Console.WriteLine($"Apskritimo plotas: {Value}");
+                Value = 2.0 * Math.PI * Radius;
+                Console.WriteLine($"Apskritimo plotas: {Value}");
+            }
+        }
+
+        /// <summary>
+        /// Nuskaito, apskaiciuoja kubo turi ir atspausdina rezultata
+        /// </summary>
+        public static void ReadAndCalculateCubeContent()
+        {
+            Console.WriteLine("Iveskite kubo krastines ilgi:");
+            if (!double.TryParse(Console.ReadLine(), out double Number) || Number <= 0)
+            {
+                Console.WriteLine("Neteisinga ivestis!");
+                return;
+            }
+            Number = Number * Number * Number;
+            Console.WriteLine($"Kubo turis: {Number}");
+        }
+
+        /// <summary>
+        /// Nuskaito, konvertuoja temperatura is Celsijaus i Farenheita ir atspausdina rezultata
+        /// </summary>
+        public static void ReadAndCalculateTemperature()
+        {
+            Console.WriteLine("Iveskite temperatura Celsijaus skaleje:");
+            if (!double.TryParse(Console.ReadLine(), out double Temp))
+            {
+                Console.WriteLine("Neteisinga ivestis!");
+                return;
+            }
+            Temp = Math.Round(((Temp * 1.8) + 32.0), 1);
+            Console.WriteLine($"Temperatura Farenheito skaleje: {Temp}");
         }
     }
 }
